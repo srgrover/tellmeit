@@ -5,7 +5,7 @@ parameters:
 
 services:
     app.mailer:
-        class: AppBundle\Service\MailerService
+        class: AppBundle\Services\MailerService
         arguments: ["%notification.prefix%", "%notification.email_from%", "@mailer", "@translator"]
     # default configuration for services in *this* file
     _defaults:
