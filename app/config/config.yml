@@ -9,8 +9,10 @@ parameters:
     locale: es
 
 framework:
+    templating:
+        engines: ['twig']
     #esi: ~
-    translator: { fallbacks: ['%locale%'] }
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -41,14 +43,14 @@ twig:
         app_name:     "TELLMEIT"
         app_repository: "https://github.com/srgrover/tellmeit"
         app_version:  "0"
-        app_organization: "%organization.name%"
-        app_organization_city: "%organization.city%"
-        menu_extension: "@app.menu_builders_chain"
+#        app_organization: "%organization.name%"
+#        app_organization_city: "%organization.city%"
+#        menu_extension: "@app.menu_builders_chain"
 
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver: "%database_driver%"
+        driver: pdo_mysql
         host: '%database_host%'
         port: '%database_port%'
         dbname: '%database_name%'
@@ -75,9 +77,9 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-knp_paginator:
-    template:
-        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+#knp_paginator:
+#    template:
+#        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'

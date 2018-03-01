@@ -11,7 +11,7 @@ security:
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.email
+            id: fos_user.user_provider.username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -25,8 +25,8 @@ security:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
 
-            logout:       true
-            anonymous:    true
+            logout: true
+            anonymous: true
 
             switch_user:
                 role: ROLE_ADMIN
