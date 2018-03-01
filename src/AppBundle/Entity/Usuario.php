@@ -1,14 +1,15 @@
 <?php
-// src/AppBundle/Entity/User.php
 
 namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="Usuario")
+ * @UniqueEntity("email")
  */
 class Usuario extends BaseUser
 {
@@ -75,6 +76,20 @@ class Usuario extends BaseUser
      * @var \DateTime
      */
     protected $activacion;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Deporte", mappedBy="usuario")
+     *
+     * @var Deporte
+     */
+    protected $deportes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Entretenimiento", mappedBy="usuario")
+     *
+     * @var Entretenimiento
+     */
+    protected $entretenimientos;
 
     public function __construct()
     {
